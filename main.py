@@ -8,7 +8,6 @@ class Field:
         return str(self.value)
 
 class Name(Field):
-    # реалізація класу
 		pass
 
 class Phone(Field):
@@ -50,6 +49,15 @@ class Record:
         return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
 
 class AddressBook(UserDict):
-    # реалізація класу
-		pass
-
+    def add_record(self, record):
+        key = record.name.value
+        value = record
+        self.data[key] = value 
+    
+    def find(self, name):
+        return self.data.get(name)
+    
+    def delete(self, name):
+        self.data.pop(name, None)
+        
+        
